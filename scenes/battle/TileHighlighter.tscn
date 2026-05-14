@@ -1,0 +1,7 @@
+[gd_scene load_steps=1 format=3 uid="uid://dxt1ghlgf8xhx"]
+
+[node name="TileHighlighter" type="ColorRect"]
+offset_right = 62.0
+offset_bottom = 62.0
+color = Color(0.2, 0.5, 1, 0.4)
+mouse_filter = 2

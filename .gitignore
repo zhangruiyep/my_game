@@ -1,0 +1,19 @@
+# Godot
+.godot/
+*.import
+*.translation
+export/**/*.pck
+export/**/*.wasm
+export/**/*.js
+export/**/*.worker.js
+export/**/*.audio.worklet.js
+export/**/*.side.wasm
+!export/web/index.html
+
+# Backend
+backend/node_modules/
+backend/game.db
+
+# OS
+Thumbs.db
+.DS_Store

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4wofw08v2xrh"]
+
+[ext_resource type="Script" path="res://scripts/battle/MapController.gd" id="1_mapctrl"]
+[ext_resource type="Script" path="res://scripts/battle/CombatSystem.gd" id="2_combat"]
+[ext_resource type="Script" path="res://scripts/battle/AIController.gd" id="3_ai"]
+[ext_resource type="Script" path="res://scripts/battle/BattleScene.gd" id="4_battle"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("4_battle")
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("1_mapctrl")
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="CombatSystem" type="Node" parent="."]
+script = ExtResource("2_combat")
+
+[node name="AIController" type="Node" parent="."]
+script = ExtResource("3_ai")
