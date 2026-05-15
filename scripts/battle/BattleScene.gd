@@ -395,6 +395,12 @@ func _on_unit_acted(unit: Node):
 	if GameState.current_phase == GameState.Phase.PLAYER:
 		if TurnManager.check_victory():
 			return
+		if TurnManager.all_player_units_acted():
+			info_panel.visible = true
+			info_label.text = "[center]所有单位已行动，自动结束回合…[/center]"
+			await get_tree().create_timer(0.8).timeout
+			info_panel.visible = false
+			_on_end_turn()
 
 func _on_combat_ended(atk, def, result):
 	_update_hud()

@@ -40,6 +40,12 @@ func mark_unit_acted(unit: Node):
 func has_unit_acted(unit: Node) -> bool:
 	return unit in units_moved_this_turn
 
+func all_player_units_acted() -> bool:
+	for unit in GameState.player_units:
+		if unit.is_alive() and unit not in units_moved_this_turn:
+			return false
+	return true
+
 func check_victory() -> bool:
 	for unit in GameState.enemy_units:
 		if unit.is_alive():
