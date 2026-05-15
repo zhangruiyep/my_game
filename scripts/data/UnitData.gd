@@ -84,23 +84,23 @@ static func get_class_data(class_type: ClassType) -> Dictionary:
 static func get_weapon_data(weapon_type: WeaponType, tier: String = "iron") -> Dictionary:
 	var weapons = {
 		WeaponType.SWORD: {
-			"iron": { "name": "铁剑", "might": 5, "hit": 90, "crit": 0, "weight": 5, "range_min": 1, "range_max": 1, "uses": 46 },
-			"steel": { "name": "钢剑", "might": 8, "hit": 80, "crit": 0, "weight": 10, "range_min": 1, "range_max": 1, "uses": 30 }
+			"iron": { "name": "铁剑", "might": 5, "hit": 90, "crit": 0, "weight": 5, "range_min": 1, "range_max": 1, "uses": 46, "type": WeaponType.SWORD },
+			"steel": { "name": "钢剑", "might": 8, "hit": 80, "crit": 0, "weight": 10, "range_min": 1, "range_max": 1, "uses": 30, "type": WeaponType.SWORD }
 		},
 		WeaponType.LANCE: {
-			"iron": { "name": "铁枪", "might": 6, "hit": 85, "crit": 0, "weight": 6, "range_min": 1, "range_max": 1, "uses": 45 }
+			"iron": { "name": "铁枪", "might": 6, "hit": 85, "crit": 0, "weight": 6, "range_min": 1, "range_max": 1, "uses": 45, "type": WeaponType.LANCE }
 		},
 		WeaponType.AXE: {
-			"iron": { "name": "铁斧", "might": 8, "hit": 75, "crit": 0, "weight": 10, "range_min": 1, "range_max": 1, "uses": 45 }
+			"iron": { "name": "铁斧", "might": 8, "hit": 75, "crit": 0, "weight": 10, "range_min": 1, "range_max": 1, "uses": 45, "type": WeaponType.AXE }
 		},
 		WeaponType.BOW: {
-			"iron": { "name": "铁弓", "might": 6, "hit": 85, "crit": 0, "weight": 5, "range_min": 2, "range_max": 2, "uses": 45 }
+			"iron": { "name": "铁弓", "might": 6, "hit": 85, "crit": 0, "weight": 5, "range_min": 2, "range_max": 2, "uses": 45, "type": WeaponType.BOW }
 		},
 		WeaponType.MAGIC: {
-			"fire": { "name": "火焰", "might": 5, "hit": 90, "crit": 0, "weight": 4, "range_min": 1, "range_max": 2, "uses": 40 }
+			"fire": { "name": "火焰", "might": 5, "hit": 90, "crit": 0, "weight": 4, "range_min": 1, "range_max": 2, "uses": 40, "type": WeaponType.MAGIC }
 		},
 		WeaponType.STAFF: {
-			"heal": { "name": "治疗", "might": 10, "hit": 100, "crit": 0, "weight": 2, "range_min": 1, "range_max": 1, "uses": 30 }
+			"heal": { "name": "治疗", "might": 10, "hit": 100, "crit": 0, "weight": 2, "range_min": 1, "range_max": 1, "uses": 30, "type": WeaponType.STAFF }
 		}
 	}
 	return weapons.get(weapon_type, {}).get(tier, {})

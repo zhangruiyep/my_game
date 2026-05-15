@@ -281,6 +281,9 @@ func _on_attack_pressed():
 	if selected == null:
 		return
 
+	selected.set_grid_position(current_target)
+	selected.grid_position = current_target
+
 	var weapon = selected.weapon
 	var atk_range = map_controller.get_attack_range(current_target, weapon.get("range_min", 1), weapon.get("range_max", 1))
 
