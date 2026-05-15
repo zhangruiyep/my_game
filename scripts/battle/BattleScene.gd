@@ -14,7 +14,7 @@ var action_menu: Panel
 var attack_btn: Button
 var wait_btn: Button
 var battle_preview: Panel
-var preview_label: Label
+var preview_label: RichTextLabel
 var confirm_btn: Button
 var cancel_btn: Button
 var game_over_panel: Panel
@@ -26,6 +26,9 @@ var level_up_label: Label
 var unit_scene = preload("res://scenes/battle/Unit.tscn")
 var current_target: Vector2i = Vector2i.ZERO
 var current_action_target: Node = null
+var selecting_attack_target: bool = false
+var attack_targets: Array = []
+var original_position: Vector2i = Vector2i.ZERO
 
 func _ready():
 	map_controller = $Map
@@ -125,13 +128,16 @@ func _create_ui():
 	battle_preview.visible = false
 	ui_layer.add_child(battle_preview)
 
-	preview_label = Label.new()
+	preview_label = RichTextLabel.new()
 	preview_label.anchor_right = 1.0
 	preview_label.anchor_bottom = 1.0
 	preview_label.offset_left = 10
 	preview_label.offset_top = 10
 	preview_label.offset_right = -10
 	preview_label.offset_bottom = -10
+	preview_label.bbcode_enabled = true
+	preview_label.fit_content = true
+	preview_label.scroll_active = false
 	battle_preview.add_child(preview_label)
 
 	confirm_btn = Button.new()
@@ -228,20 +234,31 @@ func _on_tile_clicked(pos: Vector2i):
 		_clear_selection()
 		return
 
-	if action_menu.visible:
+	if selecting_attack_target:
+		map_controller.clear_attack_highlights()
+		selecting_attack_target = false
+		attack_targets.clear()
+		_show_action_menu(selected.grid_position)
+		return
+
+	if not action_menu.visible:
 		return
 
 	var move_range = map_controller.get_move_range(selected.grid_position, selected.current_stats["mov"], selected.unit_data["move_type"])
 	if pos in move_range:
-		current_target = pos
-		action_menu.position = map_controller.grid_to_world(pos) - action_menu.size / 2
-		action_menu.visible = true
+		_show_action_menu(pos)
 
 func _on_unit_clicked(unit: Node):
 	if GameState.current_phase != GameState.Phase.PLAYER:
 		return
 	if unit.allegiance != "player":
-		_show_unit_info(unit)
+		if selecting_attack_target and unit in attack_targets:
+			map_controller.clear_attack_highlights()
+			selecting_attack_target = false
+			current_action_target = unit
+			_show_battle_preview(GameState.selected_unit, unit, current_target, unit.grid_position)
+		else:
+			_show_unit_info(unit)
 		return
 	if TurnManager.has_unit_acted(unit):
 		return
@@ -255,6 +272,7 @@ func _select_unit(unit: Node):
 	var move_range = map_controller.get_move_range(unit.grid_position, unit.current_stats["mov"], unit.unit_data["move_type"])
 	map_controller.highlight_move_range(move_range)
 	_show_unit_info(unit)
+	_show_action_menu(unit.grid_position)
 
 func _clear_selection():
 	GameState.selected_unit = null
@@ -262,6 +280,8 @@ func _clear_selection():
 	info_panel.visible = false
 	action_menu.visible = false
 	battle_preview.visible = false
+	selecting_attack_target = false
+	attack_targets.clear()
 
 func _show_unit_info(unit: Node):
 	info_panel.visible = true
@@ -281,24 +301,30 @@ func _on_attack_pressed():
 	if selected == null:
 		return
 
+	original_position = selected.grid_position
 	selected.set_grid_position(current_target)
 	selected.grid_position = current_target
 
 	var weapon = selected.weapon
 	var atk_range = map_controller.get_attack_range(current_target, weapon.get("range_min", 1), weapon.get("range_max", 1))
 
-	var target_unit = null
+	attack_targets.clear()
 	for pos in atk_range:
 		var unit = GameState.get_unit_at(pos)
 		if unit and unit.allegiance == "enemy":
-			target_unit = unit
-			current_action_target = unit
-			break
+			attack_targets.append(unit)
 
-	if target_unit:
-		_show_battle_preview(selected, target_unit, current_target, target_unit.grid_position)
-	else:
+	if attack_targets.is_empty():
 		_clear_selection()
+		return
+
+	if attack_targets.size() == 1:
+		current_action_target = attack_targets[0]
+		_show_battle_preview(selected, current_action_target, current_target, current_action_target.grid_position)
+		return
+
+	map_controller.highlight_attack_range(atk_range)
+	selecting_attack_target = true
 
 func _on_wait_pressed():
 	action_menu.visible = false
@@ -338,6 +364,10 @@ func _on_confirm_attack():
 
 func _on_cancel_attack():
 	battle_preview.visible = false
+	var selected = GameState.selected_unit
+	if selected and original_position != selected.grid_position:
+		selected.set_grid_position(original_position)
+		selected.grid_position = original_position
 	_clear_selection()
 
 func _on_end_turn():
@@ -415,6 +445,24 @@ func _start_battle_with_map(map_id: int):
 	ai_controller.setup(map_controller, combat_system)
 	TurnManager.start_battle()
 	_update_hud()
+
+func _has_enemy_in_range(range_positions: Array) -> bool:
+	for pos in range_positions:
+		var unit = GameState.get_unit_at(pos)
+		if unit and unit.allegiance == "enemy":
+			return true
+	return false
+
+func _show_action_menu(pos: Vector2i):
+	var selected = GameState.selected_unit
+	if selected == null:
+		return
+	current_target = pos
+	var weapon = selected.weapon
+	var atk_range = map_controller.get_attack_range(pos, weapon.get("range_min", 1), weapon.get("range_max", 1))
+	attack_btn.visible = _has_enemy_in_range(atk_range)
+	action_menu.position = map_controller.grid_to_world(pos) - action_menu.size / 2
+	action_menu.visible = true
 
 func _on_restart():
 	game_over_panel.visible = false

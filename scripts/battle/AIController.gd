@@ -24,11 +24,16 @@ func _process_next_unit():
 		return
 
 	current_ai_unit = units_to_process.pop_front()
-	if not current_ai_unit.is_alive():
+	if not is_instance_valid(current_ai_unit) or not current_ai_unit.is_alive():
 		_process_next_unit()
 		return
 
 	await get_tree().create_timer(0.5).timeout
+
+	if not is_instance_valid(current_ai_unit) or not current_ai_unit.is_alive():
+		_process_next_unit()
+		return
+
 	_execute_enemy_action()
 
 func _execute_enemy_action():
@@ -87,6 +92,10 @@ func _attack_target(attacker: Node, target: Node):
 	_after_action()
 
 func _after_action():
+	if not is_instance_valid(current_ai_unit):
+		_process_next_unit()
+		return
+
 	TurnManager.mark_unit_acted(current_ai_unit)
 	if TurnManager.check_defeat():
 		return
