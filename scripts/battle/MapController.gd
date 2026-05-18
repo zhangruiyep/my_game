@@ -29,16 +29,17 @@ func _draw_map():
 			var tile = _create_tile_sprite(x, y)
 			add_child(tile)
 
-func _create_tile_sprite(x: int, y: int) -> ColorRect:
-	var rect = ColorRect.new()
-	rect.name = "Tile_%d_%d" % [x, y]
-	rect.size = Vector2(TILE_SIZE - 2, TILE_SIZE - 2)
-	rect.position = Vector2(x * TILE_SIZE + 1, y * TILE_SIZE + 1)
-	rect.color = UnitData.get_terrain_color(tiles[y][x])
-	rect.mouse_filter = Control.MOUSE_FILTER_STOP
+func _create_tile_sprite(x: int, y: int) -> TextureRect:
+	var tex_rect = TextureRect.new()
+	tex_rect.name = "Tile_%d_%d" % [x, y]
+	tex_rect.size = Vector2(TILE_SIZE - 2, TILE_SIZE - 2)
+	tex_rect.position = Vector2(x * TILE_SIZE + 1, y * TILE_SIZE + 1)
+	tex_rect.texture = UnitData.generate_terrain_texture(tiles[y][x])
+	tex_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	tex_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 
-	rect.gui_input.connect(_on_tile_input.bind(x, y))
-	return rect
+	tex_rect.gui_input.connect(_on_tile_input.bind(x, y))
+	return tex_rect
 
 func _on_tile_input(event: InputEvent, x: int, y: int):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

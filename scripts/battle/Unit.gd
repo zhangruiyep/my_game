@@ -12,7 +12,7 @@ var weapon: Dictionary = {}
 var level: int = 1
 var exp: int = 0
 
-var sprite: ColorRect
+var sprite: Control
 var label_ref: Label
 
 signal unit_clicked(unit)
@@ -60,31 +60,12 @@ func _create_sprite():
 		sprite.queue_free()
 		label_ref = null
 
-	sprite = ColorRect.new()
+	sprite = TextureRect.new()
 	var size = 48
 	sprite.size = Vector2(size, size)
 	sprite.position = Vector2(grid_position.x * 64 + 8, grid_position.y * 64 + 8)
-
-	match unit_data.get("name", ""):
-		"领主":
-			sprite.color = Color(0.2, 0.4, 1.0)
-		"骑士":
-			sprite.color = Color(0.6, 0.8, 0.2)
-		"重甲骑士":
-			sprite.color = Color(0.5, 0.5, 0.6)
-		"佣兵":
-			sprite.color = Color(0.2, 0.6, 0.4)
-		"弓箭手":
-			sprite.color = Color(0.2, 0.7, 0.2)
-		"法师":
-			sprite.color = Color(0.6, 0.2, 0.7)
-		"修女":
-			sprite.color = Color(0.9, 0.9, 0.9)
-		"山贼":
-			sprite.color = Color(0.7, 0.2, 0.2)
-		_:
-			sprite.color = Color(0.5, 0.5, 0.5)
-
+	sprite.texture = UnitData.generate_unit_texture(unit_data.get("name", ""))
+	sprite.stretch_mode = TextureRect.STRETCH_SCALE
 	sprite.mouse_filter = Control.MOUSE_FILTER_STOP
 	sprite.gui_input.connect(_on_unit_input)
 
