@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites id="2026-05-14" name="report_4" tests="39" failures="1" skipped="0" flaky="0" time="0.000">
+	<testsuite id="0" name="test_unit_combat" package="scripts/tests" timestamp="2026-05-14T14:24:09" hostname="localhost" tests="39" failures="1" errors="0" skipped="0" flaky="0" time="23.199">
+		<testcase name="test_unit_creation_lord" classname="test_unit_combat" time="0.403">
+		</testcase>
+		<testcase name="test_unit_creation_cavalier_movement" classname="test_unit_combat" time="0.350">
+		</testcase>
+		<testcase name="test_unit_all_classes_create" classname="test_unit_combat" time="0.436">
+		</testcase>
+		<testcase name="test_unit_level2_stronger_than_level1" classname="test_unit_combat" time="0.430">
+		</testcase>
+		<testcase name="test_get_attack_physical" classname="test_unit_combat" time="0.528">
+		</testcase>
+		<testcase name="test_get_attack_magic" classname="test_unit_combat" time="0.459">
+		</testcase>
+		<testcase name="test_get_attack_staff_uses_magic" classname="test_unit_combat" time="0.467">
+		</testcase>
+		<testcase name="test_get_hit_rate" classname="test_unit_combat" time="0.572">
+		</testcase>
+		<testcase name="test_get_avoid" classname="test_unit_combat" time="0.482">
+		</testcase>
+		<testcase name="test_get_crit" classname="test_unit_combat" time="0.481">
+		</testcase>
+		<testcase name="test_get_attack_speed" classname="test_unit_combat" time="0.500">
+		</testcase>
+		<testcase name="test_get_defense_and_resistance" classname="test_unit_combat" time="0.504">
+		</testcase>
+		<testcase name="test_take_damage" classname="test_unit_combat" time="0.517">
+		</testcase>
+		<testcase name="test_take_damage_not_negative" classname="test_unit_combat" time="0.518">
+		</testcase>
+		<testcase name="test_heal_damage" classname="test_unit_combat" time="0.540">
+		</testcase>
+		<testcase name="test_is_alive_edge_cases" classname="test_unit_combat" time="0.535">
+		</testcase>
+		<testcase name="test_apply_terrain_bonus" classname="test_unit_combat" time="0.610">
+		</testcase>
+		<testcase name="test_apply_terrain_bonus_fortress" classname="test_unit_combat" time="0.560">
+		</testcase>
+		<testcase name="test_apply_terrain_bonus_out_of_bounds" classname="test_unit_combat" time="0.573">
+		</testcase>
+		<testcase name="test_reset_turn" classname="test_unit_combat" time="0.590">
+		</testcase>
+		<testcase name="test_combat_preview_sword_vs_axe_advantage" classname="test_unit_combat" time="0.590">
+		</testcase>
+		<testcase name="test_combat_preview_sword_vs_lance_disadvantage" classname="test_unit_combat" time="0.630">
+		</testcase>
+		<testcase name="test_combat_preview_bow_cannot_be_countered" classname="test_unit_combat" time="0.636">
+		</testcase>
+		<testcase name="test_combat_preview_melee_can_counter" classname="test_unit_combat" time="0.658">
+		</testcase>
+		<testcase name="test_combat_preview_damage_min_zero" classname="test_unit_combat" time="0.675">
+		</testcase>
+		<testcase name="test_combat_preview_archer_melee_cannot_counter" classname="test_unit_combat" time="0.690">
+		</testcase>
+		<testcase name="test_combat_preview_hit_rate_clamps_0_100" classname="test_unit_combat" time="0.735">
+		</testcase>
+		<testcase name="test_combat_preview_speed_double_check" classname="test_unit_combat" time="0.727">
+		</testcase>
+		<testcase name="test_combat_preview_staff_melee_stats" classname="test_unit_combat" time="0.746">
+		</testcase>
+		<testcase name="test_execute_combat_deals_damage" classname="test_unit_combat" time="0.763">
+		</testcase>
+		<testcase name="test_execute_combat_archer_no_counter" classname="test_unit_combat" time="0.778">
+		</testcase>
+		<testcase name="test_execute_combat_sets_has_acted" classname="test_unit_combat" time="0.815">
+		</testcase>
+		<testcase name="test_execute_combat_gives_exp" classname="test_unit_combat" time="0.827">
+		</testcase>
+		<testcase name="test_execute_combat_attacker_kills_defender" classname="test_unit_combat" time="0.843">
+		</testcase>
+		<testcase name="test_full_move_then_attack_flow" classname="test_unit_combat" time="0.904">
+		</testcase>
+		<testcase name="test_move_range_respects_terrain_costs_per_class" classname="test_unit_combat" time="0.865">
+			<failure message="FAILED: res://scripts/tests/test_unit_combat.gd:516" type="FAILURE">
+<![CDATA[
+Expecting: 'true' but is 'false'
+]]>
+			</failure>
+		</testcase>
+	</testsuite>
+</testsuites>

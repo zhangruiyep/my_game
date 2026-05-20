@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites id="2026-05-14" name="report_1" tests="39" failures="1" skipped="0" flaky="0" time="0.000">
+	<testsuite id="0" name="test_unit_combat" package="scripts/tests" timestamp="2026-05-14T14:08:53" hostname="localhost" tests="39" failures="1" errors="0" skipped="0" flaky="0" time="3.866">
+		<testcase name="test_unit_creation_lord" classname="test_unit_combat" time="0.958">
+		</testcase>
+		<testcase name="test_unit_creation_cavalier_movement" classname="test_unit_combat" time="0.342">
+		</testcase>
+		<testcase name="test_unit_all_classes_create" classname="test_unit_combat" time="0.437">
+		</testcase>
+		<testcase name="test_unit_level2_stronger_than_level1" classname="test_unit_combat" time="0.438">
+		</testcase>
+		<testcase name="test_get_attack_physical" classname="test_unit_combat" time="0.410">
+		</testcase>
+		<testcase name="test_get_attack_magic" classname="test_unit_combat" time="0.452">
+			<failure message="FAILED: res://scripts/tests/test_unit_combat.gd:113" type="FAILURE">
+<![CDATA[
+Expecting:
+ '12'
+ but was
+ '8'
+]]>
+			</failure>
+		</testcase>
+	</testsuite>
+</testsuites>

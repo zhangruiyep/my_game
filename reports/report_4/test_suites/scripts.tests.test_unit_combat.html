@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GdUnit4 Testsuite</title>
+	<link rel="stylesheet" href="../css/styles.css">
+	<link href="../css/breadcrumb.css" rel="stylesheet" type="text/css" />
+
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function () {
+			var report_view = $('#report_area').find('.report-column')
+
+			$('#report-table tr').click(function () {
+				var report = $(this).find('.report-column').html();
+				report_view.html(report)
+				$('.selected').removeClass('selected');
+				$(this).addClass('selected');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<header>
+		<div class="logo">
+			<img src="../css/logo.png" alt="GdUnit4 Logo">
+			<span>GdUnit4</span>
+		</div>
+		<div class="report-container">
+			<h1>Testsuite Report</h1>
+			<div>
+				<span class="label">res://scripts/tests/test_unit_combat.gd</span>
+			</div>
+			<div class="summary">
+				<div class="summary-item">
+					<span class="label">Tests</span>
+					<span class="value">39</span>
+				</div>
+				<div class="summary-item">
+					<span class="label">Skipped</span>
+					<span class="value">0</span>
+				</div>
+				<div class="summary-item">
+					<span class="label">Flaky</span>
+					<span class="value">0</span>
+				</div>
+				<div class="summary-item">
+					<span class="label">Failures</span>
+					<span class="value">1</span>
+				</div>
+				<div class="summary-item">
+					<span class="label">Orphans</span>
+					<span class="value">273</span>
+				</div>
+				<div class="summary-item">
+					<span class="label">Duration</span>
+					<span class="value">23s 199ms</span>
+				</div>
+				<div class="success-rate">
+					<div class="check-icon status-failed">✓</div>
+					<div class="rate-text">
+						<span class="label">Success Rate</span>
+						<span class="value">97%</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="breadcrumb">
+			<a href="../index.html"><span>All</span></a>
+			<a href="../path/scripts.tests.html"><span>scripts/tests</span></a>
+			<a class="active" href="#"><span>test_unit_combat</span></a>
+		</div>
+	</header>
+
+	<main>
+		<div class="tab-report-grid">
+			<div class="grid-item tab">
+				<table id="report-table">
+					<thead>
+						<tr>
+							<th>Testcase</th>
+							<th>Result</th>
+							<th>Skipped</th>
+							<th>Orphans</th>
+							<th>Duration</th>
+							<th class="report-column">Report</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+								<tr class="failed">
+									<td>TestSuite hooks</td>
+									<td>n/a</td>
+									<td>273</td>
+									<td>23s 199ms</td>
+									<td class="report-column">
+										<pre>
+line 1: WARNING: Detected 102 orphan nodes!
+	Verify your test suite setup.
+
+    • <Node> Id:280699602864
+    	No details available. Run tests in debug mode to collect details.
+    • <Node2D> Id:281706235828
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281723013046
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281756567482
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281790121916
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281823676350
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281857230784
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281890785218
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281924339652
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281957894086
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:281991448520
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282025002954
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282058557388
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282092111822
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282125666256
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282159220690
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282192775124
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282226329558
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282259883992
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282293438426
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282326992860
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282360547294
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282394101728
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282427656162
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282461210596
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282494765030
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282528319464
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282561873898
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282595428332
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282628982766
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282662537200
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282696091634
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282729646068
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282763200502
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282796754936
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282830309370
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282863863804
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282897418238
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282930972672
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282964527106
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:282998081540
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283031635974
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283065190408
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283098744842
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283132299276
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283165853710
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283199408144
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283232962578
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283266517012
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283300071446
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283333625880
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283367180314
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283400734748
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283434289182
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283467843616
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283501398050
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283534952484
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283568506918
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283602061352
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283635615786
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283669170220
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283702724654
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283736279088
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283769833522
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283803387956
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283836942390
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283870496824
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283904051258
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283937605692
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:283971160126
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284004714560
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284038268994
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284071823428
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284105377862
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284138932296
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284172486730
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284206041164
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284239595598
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284273150032
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284306704466
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284340258900
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284373813334
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284407367768
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284440922202
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284474476636
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284508031070
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284541585504
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284575139938
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284608694372
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284642248806
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284675803240
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284709357674
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284742912108
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284776466542
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284810020976
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284843575410
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284877129844
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284910684278
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284944238712
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:284977793146
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:285011347580
+    	No details available. Run tests in debug mode to collect details.
+    • <ColorRect> Id:285044902014
+    	No details available. Run tests in debug mode to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_unit_creation_lord</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>403ms</td>
+									<td class="report-column">
+										<pre>
+line 33: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_unit_creation_cavalier_movement</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>350ms</td>
+									<td class="report-column">
+										<pre>
+line 47: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_unit_all_classes_create</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>24</td>
+									<td>436ms</td>
+									<td class="report-column">
+										<pre>
+line 55: WARNING:: Found 24 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_unit_level2_stronger_than_level1</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>430ms</td>
+									<td class="report-column">
+										<pre>
+line 90: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_attack_physical</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>528ms</td>
+									<td class="report-column">
+										<pre>
+line 100: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_attack_magic</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>459ms</td>
+									<td class="report-column">
+										<pre>
+line 108: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_attack_staff_uses_magic</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>467ms</td>
+									<td class="report-column">
+										<pre>
+line 116: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_hit_rate</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>572ms</td>
+									<td class="report-column">
+										<pre>
+line 125: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_avoid</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>482ms</td>
+									<td class="report-column">
+										<pre>
+line 133: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_crit</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>481ms</td>
+									<td class="report-column">
+										<pre>
+line 140: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_attack_speed</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>500ms</td>
+									<td class="report-column">
+										<pre>
+line 147: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_get_defense_and_resistance</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>504ms</td>
+									<td class="report-column">
+										<pre>
+line 155: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_take_damage</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>517ms</td>
+									<td class="report-column">
+										<pre>
+line 165: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_take_damage_not_negative</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>518ms</td>
+									<td class="report-column">
+										<pre>
+line 179: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_heal_damage</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>540ms</td>
+									<td class="report-column">
+										<pre>
+line 187: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_is_alive_edge_cases</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>535ms</td>
+									<td class="report-column">
+										<pre>
+line 200: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_apply_terrain_bonus</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>610ms</td>
+									<td class="report-column">
+										<pre>
+line 215: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_apply_terrain_bonus_fortress</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>560ms</td>
+									<td class="report-column">
+										<pre>
+line 231: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_apply_terrain_bonus_out_of_bounds</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>573ms</td>
+									<td class="report-column">
+										<pre>
+line 243: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_reset_turn</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>3</td>
+									<td>590ms</td>
+									<td class="report-column">
+										<pre>
+line 254: WARNING:: Found 3 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_sword_vs_axe_advantage</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>590ms</td>
+									<td class="report-column">
+										<pre>
+line 269: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_sword_vs_lance_disadvantage</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>630ms</td>
+									<td class="report-column">
+										<pre>
+line 284: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_bow_cannot_be_countered</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>636ms</td>
+									<td class="report-column">
+										<pre>
+line 297: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_melee_can_counter</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>658ms</td>
+									<td class="report-column">
+										<pre>
+line 309: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_damage_min_zero</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>675ms</td>
+									<td class="report-column">
+										<pre>
+line 321: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_archer_melee_cannot_counter</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>690ms</td>
+									<td class="report-column">
+										<pre>
+line 332: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_hit_rate_clamps_0_100</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>735ms</td>
+									<td class="report-column">
+										<pre>
+line 344: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_speed_double_check</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>727ms</td>
+									<td class="report-column">
+										<pre>
+line 357: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_combat_preview_staff_melee_stats</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>746ms</td>
+									<td class="report-column">
+										<pre>
+line 373: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_execute_combat_deals_damage</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>763ms</td>
+									<td class="report-column">
+										<pre>
+line 388: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_execute_combat_archer_no_counter</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>778ms</td>
+									<td class="report-column">
+										<pre>
+line 404: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_execute_combat_sets_has_acted</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>815ms</td>
+									<td class="report-column">
+										<pre>
+line 418: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_execute_combat_gives_exp</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>827ms</td>
+									<td class="report-column">
+										<pre>
+line 431: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_execute_combat_attacker_kills_defender</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>843ms</td>
+									<td class="report-column">
+										<pre>
+line 443: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_full_move_then_attack_flow</td>
+									<td><span class="status status-warning">WARNING</span></td>
+									<td>0</td>
+									<td>6</td>
+									<td>904ms</td>
+									<td class="report-column">
+										<pre>
+line 459: WARNING:: Found 6 possible orphan nodes.
+	Add 'collect_orphan_node_details()' to the end of the test to collect details.
+
+										</pre>
+									</td>
+								</tr>
+
+
+								<tr class="testcase-group">
+									<td>test_move_range_respects_terrain_costs_per_class</td>
+									<td><span class="status status-failed">FAILED</span></td>
+									<td>0</td>
+									<td>0</td>
+									<td>865ms</td>
+									<td class="report-column">
+										<pre>
+line 516: Expecting: 'true' but is 'false'
+
+										</pre>
+									</td>
+								</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<div id="report_area" class="grid-item tab">
+				<h4>Failure Report</h4>
+				<div class="report-column"></div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<p>Generated by <a href="https://github.com/MikeSchulze/gdUnit4">GdUnit4</a> at 2026-05-14 14:24:32</p>
+		<div class="status-legend">
+			<span class="status-legend-item">
+				<span class="status-box status-skipped"></span> Skipped
+			</span>
+			<span class="status-legend-item">
+				<span class="status-box status-passed"></span> Passed
+			</span>
+			<span class="status-legend-item">
+				<span class="status-box status-flaky"></span> Flaky
+			</span>
+			<span class="status-legend-item">
+				<span class="status-box status-warning"></span> Warning
+			</span>
+			<span class="status-legend-item">
+				<span class="status-box status-failed"></span> Failed
+			</span>
+			<span class="status-legend-item">
+				<span class="status-box status-error"></span> Error
+			</span>
+		</div>
+	</footer>
+</body>
+
+<script>
+	function groupTableRows() {
+		const table = document.getElementById('report-table');
+		const rows = table.querySelectorAll('tbody tr');
+
+		let previousTestCase = '';
+		let groupStartIndex = 0;
+		let groupColorToggle = true; // Toggle between two colors
+
+		rows.forEach((row, index) => {
+			const testCaseName = row.cells[0].textContent.trim();
+
+			if (testCaseName !== previousTestCase) {
+				// Close the previous group
+				if (index > 0 && groupStartIndex !== index - 1) {
+					// Apply background color to the group
+					const groupClass = groupColorToggle ? 'group-bg-1' : 'group-bg-2';
+					for (let i = groupStartIndex; i <= index - 1; i++) {
+						rows[i].classList.add(groupClass);
+					}
+
+					// Toggle background color for the next group
+					groupColorToggle = !groupColorToggle;
+				}
+
+				// Start a new group
+				groupStartIndex = index;
+			}
+
+			previousTestCase = testCaseName;
+		});
+
+		// Handle the last group
+		if (groupStartIndex !== rows.length - 1) {
+			// Apply background color to the last group
+			const groupClass = groupColorToggle ? 'group-bg-1' : 'group-bg-2';
+			for (let i = groupStartIndex; i < rows.length; i++) {
+				rows[i].classList.add(groupClass);
+			}
+		}
+	}
+
+	// Call the function to group table rows after the DOM loads
+	document.addEventListener('DOMContentLoaded', groupTableRows);
+</script>
+
+</html>
