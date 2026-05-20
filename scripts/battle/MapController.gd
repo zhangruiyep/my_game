@@ -16,6 +16,9 @@ signal unit_move_complete
 func _ready():
 	pass
 
+func get_map_pixel_size() -> Vector2:
+	return Vector2(grid_width * TILE_SIZE, grid_height * TILE_SIZE)
+
 func setup_map(map_data: Dictionary):
 	grid_width = map_data["width"]
 	grid_height = map_data["height"]

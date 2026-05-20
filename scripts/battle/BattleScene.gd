@@ -5,6 +5,7 @@ var units_node: Node
 var combat_system: Node
 var ai_controller: Node
 
+var hud: Control
 var turn_label: Label
 var phase_label: Label
 var end_turn_btn: Button
@@ -22,6 +23,8 @@ var result_label: Label
 var next_chapter_btn: Button
 var restart_btn: Button
 var level_up_label: Label
+var sidebar_left: Panel
+var sidebar_right: Panel
 
 var unit_scene = preload("res://scenes/battle/Unit.tscn")
 var current_target: Vector2i = Vector2i.ZERO
@@ -56,7 +59,7 @@ func _create_ui():
 	ui_layer.name = "UILayer"
 	add_child(ui_layer)
 
-	var hud = Control.new()
+	hud = Control.new()
 	hud.name = "BattleHUD"
 	hud.anchor_right = 1.0
 	hud.anchor_bottom = 1.0
@@ -64,30 +67,33 @@ func _create_ui():
 	ui_layer.add_child(hud)
 
 	turn_label = Label.new()
-	turn_label.position = Vector2(10, 10)
 	turn_label.size = Vector2(200, 30)
-	turn_label.add_theme_font_size_override("font_size", 20)
+	turn_label.add_theme_font_size_override("font_size", 18)
 	turn_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	turn_label.text = "玩家回合"
 	hud.add_child(turn_label)
 
 	phase_label = Label.new()
-	phase_label.position = Vector2(10, 45)
 	phase_label.size = Vector2(200, 20)
-	phase_label.add_theme_font_size_override("font_size", 14)
+	phase_label.add_theme_font_size_override("font_size", 12)
 	phase_label.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8, 1))
 	phase_label.text = "第1回合"
 	hud.add_child(phase_label)
 
 	end_turn_btn = Button.new()
-	end_turn_btn.position = Vector2(1150, 10)
-	end_turn_btn.size = Vector2(120, 40)
+	end_turn_btn.size = Vector2(110, 36)
 	end_turn_btn.text = "结束回合"
 	hud.add_child(end_turn_btn)
 
+	sidebar_left = Panel.new()
+	sidebar_left.visible = false
+	hud.add_child(sidebar_left)
+
+	sidebar_right = Panel.new()
+	sidebar_right.visible = false
+	hud.add_child(sidebar_right)
+
 	info_panel = Panel.new()
-	info_panel.position = Vector2(280, 640)
-	info_panel.size = Vector2(720, 70)
 	info_panel.visible = false
 	hud.add_child(info_panel)
 
@@ -101,30 +107,28 @@ func _create_ui():
 	info_label.bbcode_enabled = true
 	info_label.fit_content = true
 	info_label.scroll_active = false
-	info_label.add_theme_font_size_override("normal_font_size", 13)
+	info_label.add_theme_font_size_override("normal_font_size", 12)
 	info_panel.add_child(info_label)
 
 	action_menu = Panel.new()
-	action_menu.size = Vector2(280, 120)
-	action_menu.position = Vector2(500, 400)
+	action_menu.size = Vector2(240, 100)
 	action_menu.visible = false
 	ui_layer.add_child(action_menu)
 
 	attack_btn = Button.new()
 	attack_btn.position = Vector2(10, 10)
-	attack_btn.size = Vector2(120, 40)
+	attack_btn.size = Vector2(100, 36)
 	attack_btn.text = "攻击"
 	action_menu.add_child(attack_btn)
 
 	wait_btn = Button.new()
-	wait_btn.position = Vector2(150, 10)
-	wait_btn.size = Vector2(120, 40)
+	wait_btn.position = Vector2(130, 10)
+	wait_btn.size = Vector2(100, 36)
 	wait_btn.text = "待机"
 	action_menu.add_child(wait_btn)
 
 	battle_preview = Panel.new()
-	battle_preview.position = Vector2(400, 150)
-	battle_preview.size = Vector2(480, 260)
+	battle_preview.size = Vector2(420, 240)
 	battle_preview.visible = false
 	ui_layer.add_child(battle_preview)
 
@@ -142,18 +146,17 @@ func _create_ui():
 
 	confirm_btn = Button.new()
 	confirm_btn.text = "确认攻击"
-	confirm_btn.position = Vector2(160, 220)
-	confirm_btn.size = Vector2(160, 30)
+	confirm_btn.position = Vector2(130, 200)
+	confirm_btn.size = Vector2(140, 30)
 	battle_preview.add_child(confirm_btn)
 
 	cancel_btn = Button.new()
 	cancel_btn.text = "取消"
-	cancel_btn.position = Vector2(330, 220)
-	cancel_btn.size = Vector2(70, 30)
+	cancel_btn.position = Vector2(290, 200)
+	cancel_btn.size = Vector2(60, 30)
 	battle_preview.add_child(cancel_btn)
 
 	game_over_panel = Panel.new()
-	game_over_panel.position = Vector2(440, 280)
 	game_over_panel.size = Vector2(400, 160)
 	game_over_panel.visible = false
 	ui_layer.add_child(game_over_panel)
@@ -179,11 +182,10 @@ func _create_ui():
 	game_over_panel.add_child(restart_btn)
 
 	level_up_label = Label.new()
-	level_up_label.position = Vector2(480, 200)
-	level_up_label.size = Vector2(320, 60)
+	level_up_label.size = Vector2(320, 40)
 	level_up_label.visible = false
 	level_up_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	level_up_label.add_theme_font_size_override("font_size", 22)
+	level_up_label.add_theme_font_size_override("font_size", 20)
 	level_up_label.add_theme_color_override("font_color", Color(0, 1, 0.4, 1))
 	ui_layer.add_child(level_up_label)
 
@@ -191,9 +193,63 @@ func _start_battle():
 	var map_data = MapData.new().get_map()
 	map_controller.setup_map(map_data)
 	_spawn_units(map_data)
+
+	_center_map_and_setup_ui()
+
 	ai_controller.setup(map_controller, combat_system)
 	TurnManager.start_battle()
 	_update_hud()
+
+func _center_map_and_setup_ui():
+	var window_size = DisplayServer.window_get_size()
+	var map_pixel = map_controller.get_map_pixel_size()
+	var map_origin = Vector2(
+		max(0.0, (window_size.x - map_pixel.x) / 2),
+		max(0.0, (window_size.y - map_pixel.y) / 2)
+	)
+	$Map.position = map_origin
+	$Units.position = map_origin
+	_position_ui(window_size, map_pixel, map_origin)
+
+func _position_ui(window_size: Vector2, map_pixel: Vector2, map_origin: Vector2):
+	var is_wide = window_size.x >= window_size.y
+	var top_bar_h = 44
+	var gap = 6
+	var sidebar_margin = 4
+
+	turn_label.position = Vector2(8, 6)
+	phase_label.position = Vector2(8, 26)
+
+	if is_wide:
+		end_turn_btn.position = Vector2(window_size.x - end_turn_btn.size.x - 8, 4)
+
+		var left_w = map_origin.x - gap
+		var right_w = window_size.x - (map_origin.x + map_pixel.x) - gap
+
+		sidebar_left.visible = true
+		sidebar_left.position = Vector2(0, top_bar_h + gap)
+		sidebar_left.size = Vector2(left_w, window_size.y - top_bar_h - gap)
+
+		sidebar_right.visible = true
+		sidebar_right.position = Vector2(map_origin.x + map_pixel.x + gap, top_bar_h + gap)
+		sidebar_right.size = Vector2(right_w, window_size.y - top_bar_h - gap)
+
+		info_panel.position = Vector2(map_origin.x + map_pixel.x + gap + sidebar_margin, top_bar_h + gap + sidebar_margin)
+		info_panel.size = Vector2(right_w - sidebar_margin * 2, window_size.y - top_bar_h - gap * 2 - sidebar_margin * 2)
+	else:
+		end_turn_btn.position = Vector2(window_size.x - end_turn_btn.size.x - 8, 4)
+
+		sidebar_left.visible = false
+		sidebar_right.visible = false
+
+		var panel_y = map_origin.y + map_pixel.y + gap
+		var panel_h = window_size.y - panel_y
+
+		info_panel.position = Vector2(4, panel_y + 2)
+		info_panel.size = Vector2(window_size.x - 8, panel_h - 48)
+
+	game_over_panel.position = Vector2((window_size.x - game_over_panel.size.x) / 2, (window_size.y - game_over_panel.size.y) / 2)
+	battle_preview.position = Vector2((window_size.x - battle_preview.size.x) / 2, (window_size.y - battle_preview.size.y) / 2)
 
 func _spawn_units(map_data: Dictionary):
 	for child in units_node.get_children():
@@ -434,6 +490,8 @@ func _update_hud():
 func _on_unit_leveled_up(unit: Node):
 	level_up_label.text = "%s 升级为 Lv.%d!" % [unit.get_class_name_str(), unit.level]
 	level_up_label.visible = true
+	var ws = DisplayServer.window_get_size()
+	level_up_label.position = Vector2((ws.x - level_up_label.size.x) / 2, ws.y / 2 - 40)
 	var tween = create_tween()
 	tween.tween_interval(1.5)
 	tween.tween_property(level_up_label, "visible", false, 0)
@@ -448,6 +506,9 @@ func _start_battle_with_map(map_id: int):
 	var map_data = MapData.new().get_map(map_id)
 	map_controller.setup_map(map_data)
 	_spawn_units(map_data)
+
+	_center_map_and_setup_ui()
+
 	ai_controller.setup(map_controller, combat_system)
 	TurnManager.start_battle()
 	_update_hud()
@@ -467,7 +528,8 @@ func _show_action_menu(pos: Vector2i):
 	var weapon = selected.weapon
 	var atk_range = map_controller.get_attack_range(pos, weapon.get("range_min", 1), weapon.get("range_max", 1))
 	attack_btn.visible = _has_enemy_in_range(atk_range)
-	action_menu.position = map_controller.grid_to_world(pos) - action_menu.size / 2
+	var world_pos = $Map.position + map_controller.grid_to_world(pos)
+	action_menu.position = world_pos - action_menu.size / 2
 	action_menu.visible = true
 
 func _on_restart():
